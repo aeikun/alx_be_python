@@ -23,4 +23,4 @@ match priority:
         case _:
             reminder = "Invalid priority level. Please enter high, medium, or low."
 
-print(f"\nReminder: {reminder}")
+print(f"Reminder: {reminder}")
