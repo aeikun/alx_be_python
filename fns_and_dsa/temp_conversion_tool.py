@@ -26,7 +26,7 @@ def main():
         else:
             raise ValueError("Invalid temperature unit. Please enter 'C' or 'F'.")
 
-        print(f"{temperature}°{unit.upper()} is {converted_temp}°{target_unit}")
+        print(f"{temperature:.2f}°{unit.upper()} is {converted_temp:.2f}°{target_unit}")
 
     except ValueError as ve:
         print(f"Error: {ve}. Please enter a numeric value for temperature.")
