@@ -1,17 +1,24 @@
-FAHRENHEIT_TO_CELSIUS_FACTOR = 5 / 9
-CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5
+def convert_to_celsius(fahrenheit):
+    fahrenheit_to_celsius_factor = 5 / 9
+    celsius = (fahrenheit - 32) * fahrenheit_to_celsius_factor
+    return celsius
+
+def convert_to_fahrenheit(celsius):
+    celsius_to_fahrenheit_factor = 9 / 5
+    fahrenheit = celsius * celsius_to_fahrenheit_factor + 32
+    return fahrenheit
 
 def convert_temperature(temperature, unit):
-    global FAHRENHEIT_TO_CELSIUS_FACTOR, CELSIUS_TO_FAHRENHEIT_FACTOR
-    
     if unit.upper() == 'F':
-        celsius = (temperature - 32) * FAHRENHEIT_TO_CELSIUS_FACTOR
-        return celsius, 'C'
+        converted_temp = convert_to_celsius(temperature)
+        target_unit = 'C'
     elif unit.upper() == 'C':
-        fahrenheit = temperature * CELSIUS_TO_FAHRENHEIT_FACTOR + 32
-        return fahrenheit, 'F'
+        converted_temp = convert_to_fahrenheit(temperature)
+        target_unit = 'F'
     else:
         raise ValueError("Invalid temperature unit. Please enter 'C' or 'F'.")
+    
+    return converted_temp, target_unit
 
 def main():
     try:
@@ -21,7 +28,7 @@ def main():
 
         converted_temp, target_unit = convert_temperature(temperature, unit)
 
-        print(f"{temperature}°{unit.upper()} is {converted_temp}°{target_unit}")
+        print(f"{temperature:.2f}°{unit.upper()} is {converted_temp:.2f}°{target_unit}")
 
     except ValueError as ve:
         print(f"Error: {ve}. Please enter a numeric value for temperature.")
